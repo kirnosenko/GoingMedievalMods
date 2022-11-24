@@ -309,7 +309,7 @@ namespace CharacterEdit
                             List<string> perkIds = tc.Field("perkIds").GetValue<List<string>>();
                             List<Perk> perks = tc.Field("perks").GetValue<List<Perk>>();
 
-                            List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.GetAll(p => true).ToList();
+                            List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.AllItems.ToList();
 
                             if (Input.mouseScrollDelta.y < 0 && perks.Count > 1)
                             {
@@ -335,7 +335,7 @@ namespace CharacterEdit
                             int perkIndex = rcr.gameObject.transform.GetSiblingIndex();
                             string perkId = perks[perkIndex].GetID();
 
-                            List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.GetAll(p => true).ToList();
+                            List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.AllItems.ToList();
                             int allPerksIndex = allPerks.FindIndex(p => p.Name == perkId);
 
                             Dbgl($"perk id {perkId}");
@@ -668,7 +668,7 @@ namespace CharacterEdit
                 {
                     List<string> perkIds = tc.Field("perkIds").GetValue<List<string>>();
                     List<Perk> perks = tc.Field("perks").GetValue<List<Perk>>();
-                    List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.GetAll(p => true).ToList();
+                    List<Perk> allPerks = MonoSingleton<PerkRepository>.Instance.AllItems.ToList();
 
                     if (Input.GetKey(KeyCode.LeftControl))
                     {

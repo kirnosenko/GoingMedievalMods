@@ -35,10 +35,10 @@ namespace DevTools
 
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), null);
         }
-        [HarmonyPatch(typeof(MapGeneration), "ExecuteStep")]
+        [HarmonyPatch(typeof(MapGenerator), "ExecuteStep")]
         static class ExecuteStep_Patch
         {
-            static void Prefix(MapGeneration __instance, ref MapGenerationStep2 step, int ___mapSizeX, int ___mapSizeZ)
+            static void Prefix(MapGenerator __instance, ref MapGenerationStep2 step, int ___mapSizeX, int ___mapSizeZ)
             {
                 if (!modEnabled.Value)
                     return;
@@ -52,7 +52,7 @@ namespace DevTools
                 //t.Field("repeatCount").SetValue(Mathf.RoundToInt(t.Field("repeatCount").GetValue<int>() * sizeMult));
             }
         }
-        [HarmonyPatch(typeof(MapGeneration), "ApplyVoxelTypes")]
+        [HarmonyPatch(typeof(MapGenerator), "ApplyVoxelTypes")]
         static class ApplyVoxelTypes_Patch
         {
             static void Prefix(int ___mapSizeX, int ___mapSizeZ, List<VoxelTypeDistribution> voxelTypeDistribution)
@@ -70,7 +70,7 @@ namespace DevTools
                 }
             }
         }
-        [HarmonyPatch(typeof(MapGeneration), "GetSmoothValue")]
+        [HarmonyPatch(typeof(MapGenerator), "GetSmoothValue")]
         static class GetSmoothValue_Patch
         {
             static bool Prefix(ref float __result)
